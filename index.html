@@ -1,0 +1,1192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Angels World Day Care & Aftercare</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        header h1 {
+            color: #667eea;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #666;
+            font-size: 1.1em;
+            margin-bottom: 20px;
+        }
+
+        /* Navigation Styles */
+        nav {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 15px 0;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        .nav-menu {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .nav-btn {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .nav-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .nav-btn.active {
+            background: linear-gradient(45deg, #4CAF50, #45a049);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Page Content Styles */
+        .page {
+            display: none;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            margin-bottom: 30px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .card h2 {
+            color: #667eea;
+            margin-bottom: 25px;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 15px;
+            font-size: 2em;
+        }
+
+        /* Form Styles */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #555;
+            font-size: 1.1em;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        button {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            margin: 10px 5px;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Two Column Layout */
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            align-items: start;
+        }
+
+        /* List Styles */
+        .list-container {
+            background: #f8f9ff;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .list-container h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 8px;
+        }
+
+        .list-item {
+            background: white;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+            border-left: 5px solid #667eea;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease;
+        }
+
+        .list-item:hover {
+            transform: translateX(5px);
+        }
+
+        /* Special Styles */
+        .age-group-section {
+            margin: 20px 0;
+            padding: 20px;
+            background: #f0f4ff;
+            border-radius: 10px;
+            border: 2px solid #e0e8ff;
+        }
+
+        .radio-group {
+            display: flex;
+            gap: 30px;
+            margin: 15px 0;
+        }
+
+        .radio-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .radio-item input[type="radio"] {
+            width: auto;
+            margin: 0;
+        }
+
+        .attendance-status {
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+
+        .present {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .absent {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .error {
+            color: #dc3545;
+            font-size: 14px;
+            margin-top: 8px;
+            font-weight: bold;
+        }
+
+        .success {
+            color: #28a745;
+            font-size: 14px;
+            margin-top: 8px;
+            font-weight: bold;
+        }
+
+        /* Dashboard Styles */
+        .dashboard-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .stat-number {
+            font-size: 3em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            color: #666;
+            margin-top: 40px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-menu {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .nav-btn {
+                width: 80%;
+                text-align: center;
+            }
+
+            .two-column {
+                grid-template-columns: 1fr;
+            }
+            
+            .dashboard-stats {
+                grid-template-columns: 1fr;
+            }
+
+            header h1 {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌟 Angels World Day Care & Aftercare 🌟</h1>
+            <p class="subtitle">Nurturing young minds with love and care</p>
+            
+            <nav>
+                <div class="nav-menu">
+                    <button class="nav-btn active" data-page="dashboard">🏠 Dashboard</button>
+                    <button class="nav-btn" data-page="children">👶 Children</button>
+                    <button class="nav-btn" data-page="staff">👩‍🏫 Staff</button>
+                    <button class="nav-btn" data-page="activities">🎨 Activities</button>
+                    <button class="nav-btn" data-page="attendance">📋 Attendance</button>
+                    <button class="nav-btn" data-page="reports">📊 Reports</button>
+                </div>
+            </nav>
+        </header>
+
+        <!-- Dashboard Page -->
+        <div id="dashboard" class="page active">
+            <div class="card">
+                <h2>📊 Dashboard Overview</h2>
+                
+                <div class="dashboard-stats">
+                    <div class="stat-card">
+                        <div class="stat-number" id="totalChildren">0</div>
+                        <div class="stat-label">Total Children</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="totalStaff">0</div>
+                        <div class="stat-label">Staff Members</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="todayPresent">0</div>
+                        <div class="stat-label">Present Today</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="todayActivities">0</div>
+                        <div class="stat-label">Today's Activities</div>
+                    </div>
+                </div>
+
+                <div class="two-column">
+                    <div>
+                        <h3 style="color: #667eea; margin-bottom: 15px;">Recent Activity</h3>
+                        <div class="list-container">
+                            <div id="recentActivity"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 style="color: #667eea; margin-bottom: 15px;">Quick Actions</h3>
+                        <button data-page="children">Register New Child</button>
+                        <button data-page="staff">Add Staff Member</button>
+                        <button data-page="activities">Plan Activity</button>
+                        <button data-page="attendance">Record Attendance</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Children Management Page -->
+        <div id="children" class="page">
+            <div class="card">
+                <h2>👶 Child Registration & Management</h2>
+                
+                <div class="two-column">
+                    <div>
+                        <h3 style="color: #667eea; margin-bottom: 20px;">Register New Child</h3>
+                        <form id="childForm">
+                            <div class="form-group">
+                                <label for="childName">Child's Full Name:</label>
+                                <input type="text" id="childName" required>
+                                <div class="error" id="childNameError"></div>
+                            </div>
+                            
+                            <div class="age-group-section">
+                                <label>Age Group:</label>
+                                <div class="radio-group">
+                                    <div class="radio-item">
+                                        <input type="radio" id="toddler" name="ageGroup" value="Toddler (18m-3y)">
+                                        <label for="toddler">Toddler (18m-3y)</label>
+                                    </div>
+                                    <div class="radio-item">
+                                        <input type="radio" id="preschooler" name="ageGroup" value="Preschooler (3-5y)">
+                                        <label for="preschooler">Preschooler (3-5y)</label>
+                                    </div>
+                                </div>
+                                <div class="error" id="ageGroupError"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="childAge">Age (years):</label>
+                                <input type="number" id="childAge" min="1" max="6" required>
+                                <div class="error" id="childAgeError"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="medicalInfo">Medical Information:</label>
+                                <textarea id="medicalInfo" rows="4" placeholder="Any allergies, medical conditions, or special requirements..."></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="emergencyContact">Emergency Contact:</label>
+                                <input type="text" id="emergencyContact" required>
+                                <div class="error" id="emergencyContactError"></div>
+                            </div>
+
+                            <button type="button" id="addChildBtn">Register Child</button>
+                            <button type="button" id="clearChildFormBtn">Clear Form</button>
+                        </form>
+                    </div>
+
+                    <div>
+                        <div class="list-container">
+                            <h3>Registered Children</h3>
+                            <div id="childrenList"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Staff Management Page -->
+        <div id="staff" class="page">
+            <div class="card">
+                <h2>👩‍🏫 Staff Management</h2>
+                
+                <div class="two-column">
+                    <div>
+                        <h3 style="color: #667eea; margin-bottom: 20px;">Add New Staff Member</h3>
+                        <form id="staffForm">
+                            <div class="form-group">
+                                <label for="staffName">Staff Name:</label>
+                                <input type="text" id="staffName" required>
+                                <div class="error" id="staffNameError"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="staffRole">Role:</label>
+                                <select id="staffRole" required>
+                                    <option value="">Select Role</option>
+                                    <option value="Principal/Manager">Principal/Manager</option>
+                                    <option value="Classroom Teacher">Classroom Teacher</option>
+                                    <option value="Assistant Teacher">Assistant Teacher</option>
+                                    <option value="Kitchen Staff">Kitchen Staff</option>
+                                </select>
+                                <div class="error" id="staffRoleError"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="staffContact">Contact Number:</label>
+                                <input type="tel" id="staffContact" required>
+                                <div class="error" id="staffContactError"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="staffEmail">Email Address:</label>
+                                <input type="email" id="staffEmail">
+                            </div>
+
+                            <button type="button" id="addStaffBtn">Add Staff Member</button>
+                            <button type="button" id="clearStaffFormBtn">Clear Form</button>
+                        </form>
+                    </div>
+
+                    <div>
+                        <div class="list-container">
+                            <h3>Staff Members</h3>
+                            <div id="staffList"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Activities Page -->
+        <div id="activities" class="page">
+            <div class="card">
+                <h2>🎨 Daily Activity Planning</h2>
+                
+                <div class="two-column">
+                    <div>
+                        <h3 style="color: #667eea; margin-bottom: 20px;">Plan New Activity</h3>
+                        <div class="form-group">
+                            <label for="activityTime">Time:</label>
+                            <select id="activityTime">
+                                <option value="Morning">Morning (9:00-11:00)</option>
+                                <option value="Mid-morning">Mid-morning (11:00-12:00)</option>
+                                <option value="Afternoon">Afternoon (14:00-16:00)</option>
+                                <option value="Late afternoon">Late afternoon (16:00-17:00)</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="activityType">Activity Type:</label>
+                            <input type="text" id="activityType" placeholder="e.g., Circle time, Outdoor play, Art & Craft">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="activityDescription">Description:</label>
+                            <textarea id="activityDescription" rows="4" placeholder="Describe the activity details..."></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="activityMaterials">Required Materials:</label>
+                            <textarea id="activityMaterials" rows="3" placeholder="List materials needed for this activity..."></textarea>
+                        </div>
+
+                        <button type="button" id="planActivityBtn">Plan Activity</button>
+                        <button type="button" id="clearActivityFormBtn">Clear Form</button>
+                    </div>
+
+                    <div>
+                        <div class="list-container">
+                            <h3>Today's Activities</h3>
+                            <div id="activitiesList"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Attendance Page -->
+        <div id="attendance" class="page">
+            <div class="card">
+                <h2>📋 Attendance Management</h2>
+                
+                <div class="two-column">
+                    <div>
+                        <h3 style="color: #667eea; margin-bottom: 20px;">Record Attendance</h3>
+                        <div class="form-group">
+                            <label for="attendanceChild">Select Child:</label>
+                            <select id="attendanceChild">
+                                <option value="">Choose a child...</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="attendanceStaff">Recording Staff:</label>
+                            <select id="attendanceStaff">
+                                <option value="">Choose staff member...</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Attendance Status:</label>
+                            <div class="radio-group">
+                                <div class="radio-item">
+                                    <input type="radio" id="present" name="attendanceStatus" value="Present">
+                                    <label for="present">Present</label>
+                                </div>
+                                <div class="radio-item">
+                                    <input type="radio" id="absent" name="attendanceStatus" value="Absent">
+                                    <label for="absent">Absent</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="attendanceNotes">Notes:</label>
+                            <textarea id="attendanceNotes" rows="3" placeholder="Any additional notes..."></textarea>
+                        </div>
+
+                        <button type="button" id="recordAttendanceBtn">Record Attendance</button>
+                        <button type="button" id="clearAttendanceFormBtn">Clear Form</button>
+                    </div>
+
+                    <div>
+                        <div class="list-container">
+                            <h3>Today's Attendance</h3>
+                            <div id="attendanceList"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Reports Page -->
+        <div id="reports" class="page">
+            <div class="card">
+                <h2>📊 Reports & Analytics</h2>
+                
+                <div class="two-column">
+                    <div>
+                        <h3 style="color: #667eea; margin-bottom: 20px;">Attendance Summary</h3>
+                        <div class="list-container">
+                            <div id="attendanceSummary"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 style="color: #667eea; margin-bottom: 20px;">Activity Summary</h3>
+                        <div class="list-container">
+                            <div id="activitySummary"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="margin-top: 30px;">
+                    <h3 style="color: #667eea; margin-bottom: 20px;">Generate Reports</h3>
+                    <button id="generateAttendanceReportBtn">📋 Attendance Report</button>
+                    <button id="generateActivityReportBtn">🎨 Activity Report</button>
+                    <button id="generateChildrenReportBtn">👶 Children Report</button>
+                    <button id="generateStaffReportBtn">👩‍🏫 Staff Report</button>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>&copy; 2024 Angels World Day Care & Aftercare. Creating bright futures, one child at a time.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Global arrays to store data
+        let childrenArray = [];
+        let staffArray = [];
+        let activitiesArray = [];
+        let attendanceArray = [];
+        let activityLog = [];
+
+        // Page Navigation
+        function showPage(pageId) {
+            // Hide all pages
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => page.classList.remove('active'));
+            
+            // Remove active class from all nav buttons
+            const navBtns = document.querySelectorAll('.nav-btn');
+            navBtns.forEach(btn => btn.classList.remove('active'));
+            
+            // Show selected page
+            document.getElementById(pageId).classList.add('active');
+            
+            // Add active class to clicked nav button
+            const clickedBtn = document.querySelector(`.nav-btn[data-page="${pageId}"]`);
+            if (clickedBtn) {
+                clickedBtn.classList.add('active');
+            }
+            
+            // Update page-specific data
+            if (pageId === 'dashboard') {
+                updateDashboard();
+            } else if (pageId === 'reports') {
+                updateReports();
+            }
+        }
+
+        // Utility Functions
+        function showError(elementId, message) {
+            const errorElement = document.getElementById(elementId);
+            if (errorElement) {
+                errorElement.textContent = message;
+            }
+        }
+
+        function clearError(elementId) {
+            const errorElement = document.getElementById(elementId);
+            if (errorElement) {
+                errorElement.textContent = '';
+            }
+        }
+
+        // Dashboard Functions
+        function updateDashboard() {
+            document.getElementById('totalChildren').textContent = childrenArray.length;
+            document.getElementById('totalStaff').textContent = staffArray.length;
+            
+            // Count today's present children
+            const today = new Date().toLocaleDateString();
+            const todayPresent = attendanceArray.filter(record => 
+                record.date === today && record.status === 'Present'
+            ).length;
+            document.getElementById('todayPresent').textContent = todayPresent;
+            
+            document.getElementById('todayActivities').textContent = activitiesArray.length;
+            
+            updateRecentActivity();
+        }
+
+        function updateRecentActivity() {
+            const container = document.getElementById('recentActivity');
+            container.innerHTML = '';
+            
+            // Show last 5 activities from activity log
+            const recentLogs = activityLog.slice(-5).reverse();
+            
+            if (recentLogs.length === 0) {
+                container.innerHTML = '<p style="color: #666;">No recent activity</p>';
+                return;
+            }
+            
+            recentLogs.forEach(log => {
+                const logDiv = document.createElement('div');
+                logDiv.className = 'list-item';
+                logDiv.innerHTML = `
+                    <strong>${log.action}</strong><br>
+                    <small>${log.details} - ${log.time}</small>
+                `;
+                container.appendChild(logDiv);
+            });
+        }
+
+        function addToActivityLog(action, details) {
+            activityLog.push({
+                action: action,
+                details: details,
+                time: new Date().toLocaleString()
+            });
+        }
+
+        // Validation Function
+        function validateInput(inputValue, fieldName, minLength = 2) {
+            const errorElement = document.getElementById(fieldName + 'Error');
+            if (errorElement) {
+                errorElement.textContent = '';
+            }
+
+            if (!inputValue || inputValue.trim() === '') {
+                showError(fieldName + 'Error', `${fieldName.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase())} is required`);
+                return false;
+            }
+
+            if (inputValue.trim().length < minLength) {
+                showError(fieldName + 'Error', `Must be at least ${minLength} characters long`);
+                return false;
+            }
+
+            if (fieldName === 'childAge') {
+                const age = parseInt(inputValue);
+                if (age < 1 || age > 6) {
+                    showError(fieldName + 'Error', 'Age must be between 1 and 6 years');
+                    return false;
+                }
+            }
+
+            if (fieldName === 'staffContact') {
+                const phoneRegex = /^[\d\s\-\+\(\)]{10,}$/;
+                if (!phoneRegex.test(inputValue)) {
+                    showError(fieldName + 'Error', 'Please enter a valid contact number');
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        // Child Management Functions
+        function addChild() {
+            const name = document.getElementById('childName').value;
+            const age = document.getElementById('childAge').value;
+            const medical = document.getElementById('medicalInfo').value;
+            const emergency = document.getElementById('emergencyContact').value;
+            const ageGroup = document.querySelector('input[name="ageGroup"]:checked');
+
+            let isValid = true;
+            
+            if (!validateInput(name, 'childName')) isValid = false;
+            if (!validateInput(age, 'childAge')) isValid = false;
+            if (!validateInput(emergency, 'emergencyContact')) isValid = false;
+            
+            if (!ageGroup) {
+                showError('ageGroupError', 'Please select an age group');
+                isValid = false;
+            }
+
+            if (!isValid) {
+                alert('Please correct the errors before submitting');
+                return;
+            }
+
+            const child = {
+                id: childrenArray.length + 1,
+                name: name.trim(),
+                age: parseInt(age),
+                ageGroup: ageGroup.value,
+                medical: medical.trim(),
+                emergency: emergency.trim(),
+                dateRegistered: new Date().toLocaleDateString()
+            };
+
+            childrenArray.push(child);
+            updateChildrenDisplay();
+            updateAttendanceChildOptions();
+            addToActivityLog('Child Registered', `${name} has been registered`);
+            
+            document.getElementById('childForm').reset();
+            alert(`Child ${name} has been successfully registered!`);
+        }
+
+        function clearChildForm() {
+            document.getElementById('childForm').reset();
+            // Clear error messages
+            const errorElements = document.querySelectorAll('#children .error');
+            errorElements.forEach(el => el.textContent = '');
+        }
+
+        function updateChildrenDisplay() {
+            const container = document.getElementById('childrenList');
+            container.innerHTML = '';
+            
+            if (childrenArray.length === 0) {
+                container.innerHTML = '<p style="color: #666;">No children registered yet</p>';
+                return;
+            }
+
+            childrenArray.forEach(child => {
+                const childDiv = document.createElement('div');
+                childDiv.className = 'list-item';
+                childDiv.innerHTML = `
+                    <strong>${child.name}</strong> (${child.age} years)<br>
+                    <small>Age Group: ${child.ageGroup}</small><br>
+                    <small>Registered: ${child.dateRegistered}</small><br>
+                    ${child.medical ? `<small>Medical: ${child.medical}</small><br>` : ''}
+                    <small>Emergency: ${child.emergency}</small>
+                `;
+                container.appendChild(childDiv);
+            });
+        }
+
+        function updateAttendanceChildOptions() {
+            const select = document.getElementById('attendanceChild');
+            select.innerHTML = '<option value="">Choose a child...</option>';
+            
+            childrenArray.forEach(child => {
+                const option = document.createElement('option');
+                option.value = child.id;
+                option.textContent = child.name;
+                select.appendChild(option);
+            });
+        }
+
+        // Staff Management Functions
+        function addStaff() {
+            const name = document.getElementById('staffName').value;
+            const role = document.getElementById('staffRole').value;
+            const contact = document.getElementById('staffContact').value;
+            const email = document.getElementById('staffEmail').value;
+
+            let isValid = true;
+            
+            if (!validateInput(name, 'staffName')) isValid = false;
+            if (!validateInput(role, 'staffRole')) isValid = false;
+            if (!validateInput(contact, 'staffContact')) isValid = false;
+            
+            if (!isValid) {
+                alert('Please correct the errors before submitting');
+                return;
+            }
+
+            const staff = {
+                id: staffArray.length + 1,
+                name: name.trim(),
+                role: role,
+                contact: contact.trim(),
+                email: email.trim(),
+                dateAdded: new Date().toLocaleDateString()
+            };
+
+            staffArray.push(staff);
+            updateStaffDisplay();
+            updateAttendanceStaffOptions();
+            addToActivityLog('Staff Added', `${name} has been added as ${role}`);
+            
+            document.getElementById('staffForm').reset();
+            alert(`Staff member ${name} has been successfully added!`);
+        }
+
+        function clearStaffForm() {
+            document.getElementById('staffForm').reset();
+            const errorElements = document.querySelectorAll('#staff .error');
+            errorElements.forEach(el => el.textContent = '');
+        }
+
+        function updateStaffDisplay() {
+            const container = document.getElementById('staffList');
+            container.innerHTML = '';
+            
+            if (staffArray.length === 0) {
+                container.innerHTML = '<p style="color: #666;">No staff members added yet</p>';
+                return;
+            }
+
+            staffArray.forEach(staff => {
+                const staffDiv = document.createElement('div');
+                staffDiv.className = 'list-item';
+                staffDiv.innerHTML = `
+                    <strong>${staff.name}</strong><br>
+                    <small>Role: ${staff.role}</small><br>
+                    <small>Contact: ${staff.contact}</small><br>
+                    ${staff.email ? `<small>Email: ${staff.email}</small><br>` : ''}
+                    <small>Added: ${staff.dateAdded}</small>
+                `;
+                container.appendChild(staffDiv);
+            });
+        }
+
+        function updateAttendanceStaffOptions() {
+            const select = document.getElementById('attendanceStaff');
+            select.innerHTML = '<option value="">Choose staff member...</option>';
+            
+            staffArray.forEach(staff => {
+                const option = document.createElement('option');
+                option.value = staff.id;
+                option.textContent = `${staff.name} (${staff.role})`;
+                select.appendChild(option);
+            });
+        }
+
+        // Activity Functions
+        function planActivity() {
+            const time = document.getElementById('activityTime').value;
+            const type = document.getElementById('activityType').value;
+            const description = document.getElementById('activityDescription').value;
+            const materials = document.getElementById('activityMaterials').value;
+
+            if (!type || type.trim() === '') {
+                alert('Please enter an activity type');
+                return;
+            }
+
+            const activity = {
+                id: activitiesArray.length + 1,
+                time: time,
+                type: type.trim(),
+                description: description.trim(),
+                materials: materials.trim(),
+                date: new Date().toLocaleDateString()
+            };
+
+            activitiesArray.push(activity);
+            updateActivitiesDisplay();
+            addToActivityLog('Activity Planned', `${type} activity planned for ${time}`);
+            
+            document.getElementById('activityTime').selectedIndex = 0;
+            document.getElementById('activityType').value = '';
+            document.getElementById('activityDescription').value = '';
+            document.getElementById('activityMaterials').value = '';
+            
+            alert(`Activity "${type}" has been successfully planned!`);
+        }
+
+        function clearActivityForm() {
+            document.getElementById('activityTime').selectedIndex = 0;
+            document.getElementById('activityType').value = '';
+            document.getElementById('activityDescription').value = '';
+            document.getElementById('activityMaterials').value = '';
+        }
+
+        function updateActivitiesDisplay() {
+            const container = document.getElementById('activitiesList');
+            container.innerHTML = '';
+            
+            if (activitiesArray.length === 0) {
+                container.innerHTML = '<p style="color: #666;">No activities planned for today</p>';
+                return;
+            }
+
+            activitiesArray.forEach(activity => {
+                const activityDiv = document.createElement('div');
+                activityDiv.className = 'list-item';
+                activityDiv.innerHTML = `
+                    <strong>${activity.time}: ${activity.type}</strong><br>
+                    ${activity.description ? `<small>${activity.description}</small><br>` : ''}
+                    ${activity.materials ? `<small>Materials: ${activity.materials}</small>` : ''}
+                `;
+                container.appendChild(activityDiv);
+            });
+        }
+
+        // Attendance Functions
+        function recordAttendance() {
+            const childId = document.getElementById('attendanceChild').value;
+            const staffId = document.getElementById('attendanceStaff').value;
+            const status = document.querySelector('input[name="attendanceStatus"]:checked');
+            const notes = document.getElementById('attendanceNotes').value;
+
+            if (!childId || !staffId || !status) {
+                alert('Please fill all required fields');
+                return;
+            }
+
+            const child = childrenArray.find(c => c.id == childId);
+            const staff = staffArray.find(s => s.id == staffId);
+            const date = new Date().toLocaleDateString();
+
+            const attendance = {
+                id: attendanceArray.length + 1,
+                childId: childId,
+                childName: child.name,
+                staffId: staffId,
+                staffName: staff.name,
+                status: status.value,
+                notes: notes.trim(),
+                date: date,
+                time: new Date().toLocaleTimeString()
+            };
+
+            attendanceArray.push(attendance);
+            updateAttendanceDisplay();
+            addToActivityLog('Attendance Recorded', `${child.name} marked as ${status.value}`);
+            
+            alert(`Attendance for ${child.name} has been recorded as ${status.value}`);
+        }
+
+        function clearAttendanceForm() {
+            document.getElementById('attendanceChild').selectedIndex = 0;
+            document.getElementById('attendanceStaff').selectedIndex = 0;
+            document.querySelectorAll('input[name="attendanceStatus"]').forEach(radio => radio.checked = false);
+            document.getElementById('attendanceNotes').value = '';
+        }
+
+        function updateAttendanceDisplay() {
+            const container = document.getElementById('attendanceList');
+            container.innerHTML = '';
+            
+            const today = new Date().toLocaleDateString();
+            const todayRecords = attendanceArray.filter(record => record.date === today);
+            
+            if (todayRecords.length === 0) {
+                container.innerHTML = '<p style="color: #666;">No attendance records for today</p>';
+                return;
+            }
+
+            todayRecords.forEach(record => {
+                const recordDiv = document.createElement('div');
+                recordDiv.className = 'list-item';
+                recordDiv.innerHTML = `
+                    <strong>${record.childName}</strong>
+                    <span class="attendance-status ${record.status.toLowerCase()}">${record.status}</span><br>
+                    <small>Recorded by: ${record.staffName}</small><br>
+                    <small>Time: ${record.time}</small>
+                    ${record.notes ? `<br><small>Notes: ${record.notes}</small>` : ''}
+                `;
+                container.appendChild(recordDiv);
+            });
+        }
+
+        // Reports Functions
+        function updateReports() {
+            updateAttendanceSummary();
+            updateActivitySummary();
+        }
+
+        function updateAttendanceSummary() {
+            const container = document.getElementById('attendanceSummary');
+            container.innerHTML = '';
+            
+            const today = new Date().toLocaleDateString();
+            const todayRecords = attendanceArray.filter(record => record.date === today);
+            const presentCount = todayRecords.filter(record => record.status === 'Present').length;
+            const absentCount = todayRecords.filter(record => record.status === 'Absent').length;
+            const totalChildren = childrenArray.length;
+            
+            const summaryDiv = document.createElement('div');
+            summaryDiv.innerHTML = `
+                <h4>Today's Attendance (${today})</h4>
+                <p>Present: ${presentCount}</p>
+                <p>Absent: ${absentCount}</p>
+                <p>Not Recorded: ${totalChildren - (presentCount + absentCount)}</p>
+                <p>Attendance Rate: ${totalChildren > 0 ? Math.round((presentCount / totalChildren) * 100) : 0}%</p>
+            `;
+            container.appendChild(summaryDiv);
+        }
+
+        function updateActivitySummary() {
+            const container = document.getElementById('activitySummary');
+            container.innerHTML = '';
+            
+            const today = new Date().toLocaleDateString();
+            const todayActivities = activitiesArray.filter(activity => activity.date === today);
+            
+            if (todayActivities.length === 0) {
+                container.innerHTML = '<p>No activities planned for today</p>';
+                return;
+            }
+            
+            todayActivities.forEach(activity => {
+                const activityDiv = document.createElement('div');
+                activityDiv.className = 'list-item';
+                activityDiv.innerHTML = `
+                    <strong>${activity.time}</strong><br>
+                    <em>${activity.type}</em>
+                    ${activity.description ? `<br>${activity.description}` : ''}
+                `;
+                container.appendChild(activityDiv);
+            });
+        }
+
+        function generateAttendanceReport() {
+            alert('Attendance report generation would be implemented here');
+        }
+
+        function generateActivityReport() {
+            alert('Activity report generation would be implemented here');
+        }
+
+        function generateChildrenReport() {
+            alert('Children report generation would be implemented here');
+        }
+
+        function generateStaffReport() {
+            alert('Staff report generation would be implemented here');
+        }
+
+        // Initialize the application
+        function initApp() {
+            // Add sample data for demonstration
+            childrenArray = [
+                {id: 1, name: "Emma Johnson", age: 4, ageGroup: "Preschooler (3-5y)", medical: "No allergies", emergency: "Mom: 073 852 1234", dateRegistered: "10/15/2023"},
+                {id: 2, name: "Liam Williams", age: 3, ageGroup: "Preschooler (3-5y)", medical: "Peanut allergy", emergency: "Dad: 084 789 5124", dateRegistered: "11/20/2023"}
+            ];
+            
+            staffArray = [
+                {id: 1, name: "Sarah Miller", role: "Classroom Teacher", contact: "078 965 4587", email: "sarah@angelsworld.com", dateAdded: "09/01/2023"},
+                {id: 2, name: "David Brown", role: "Assistant Teacher", contact: "065 874 1285", email: "david@angelsworld.com", dateAdded: "09/15/2023"}
+            ];
+            
+            // Set up event listeners
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    showPage(e.target.getAttribute('data-page'));
+                });
+            });
+            
+            document.querySelectorAll('#dashboard button[data-page]').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    showPage(e.target.getAttribute('data-page'));
+                });
+            });
+            
+            document.getElementById('addChildBtn').addEventListener('click', addChild);
+            document.getElementById('clearChildFormBtn').addEventListener('click', clearChildForm);
+            
+            document.getElementById('addStaffBtn').addEventListener('click', addStaff);
+            document.getElementById('clearStaffFormBtn').addEventListener('click', clearStaffForm);
+            
+            document.getElementById('planActivityBtn').addEventListener('click', planActivity);
+            document.getElementById('clearActivityFormBtn').addEventListener('click', clearActivityForm);
+            
+            document.getElementById('recordAttendanceBtn').addEventListener('click', recordAttendance);
+            document.getElementById('clearAttendanceFormBtn').addEventListener('click', clearAttendanceForm);
+            
+            document.getElementById('generateAttendanceReportBtn').addEventListener('click', generateAttendanceReport);
+            document.getElementById('generateActivityReportBtn').addEventListener('click', generateActivityReport);
+            document.getElementById('generateChildrenReportBtn').addEventListener('click', generateChildrenReport);
+            document.getElementById('generateStaffReportBtn').addEventListener('click', generateStaffReport);
+            
+            // Update all displays
+            updateChildrenDisplay();
+            updateStaffDisplay();
+            updateActivitiesDisplay();
+            updateAttendanceChildOptions();
+            updateAttendanceStaffOptions();
+            updateDashboard();
+            
+            // Add to activity log
+            addToActivityLog('App Initialized', 'Application started with sample data');
+        }
+
+        // Initialize the application when the page loads
+        window.onload = initApp;
+    </script>
+</body>
+</html>
